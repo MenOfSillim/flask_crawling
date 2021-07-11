@@ -2,7 +2,7 @@
 
 ```shell
     # 가상환경 설정
-    - Mac : python3 -m venv ./(가상환경 설정할 디렉토리 이름)
+    - Mac : python3 -m venv_window ./(가상환경 설정할 디렉토리 이름)
     
     # 가상환경 실행
     - Window : Scripts/activate
