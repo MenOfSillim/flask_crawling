@@ -20,3 +20,9 @@
     # 크롤링 설정 
     pip install bs4 
 ```
+
+# MongoDB 설치
+
+- Window 버전 [설치 가이드](https://scribblinganything.tistory.com/195)
+    1. MongoDB Compass 미설치 필요 : 에러 많음
+    2. robomongo로 관리
