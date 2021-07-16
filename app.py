@@ -1,56 +1,12 @@
-from flask import Flask, render_template, request, flash, redirect
-import requests, logging
-from bs4 import BeautifulSoup
+from flask import Flask
+from flask_pymongo import PyMongo
 
-# Flask 객체 인스턴스 생성
 app = Flask(__name__)
-app.secret_key = 'asdf'
+app.config["MONGO_URI"] = "mongodb://localhost:27017/flask_crawling" #2
+mongo = PyMongo(app) #3
 
-
-@app.route('/login', methods=["GET", "POST"])
-def login():
-    if request.method == "POST":
-        userId = request.form.get('userId')
-        userPw = request.form.get('userPw')
-
-        print(f'아이디 :  {userId}, 패스워드 : {userPw}')
-
-        if userId == '' or userPw == '':
-            flash('아이디 혹은 비밀번호를 입력하지 않으셨습니다.')
-            return render_template('login.html')
-        else:
-            flash('로그인 성공')
-            return render_template('login.html')
-    else:
-        return render_template("login.html")
-
-
-@app.route('/', methods=["GET"])
-def index():
-    return "zzz"
-
-
-@app.route('/crawling')
-def crawling():
-    # 엔터치기
-    req = requests.get('https://www.naver.com/')
-
-    # 이런 식으로 HTML에 있는 코드를 다 가져온다
-    soup = BeautifulSoup(req.text, 'html.parser')
-
-    myList = []
-
-    for i in soup.select(".theme_cont"):
-        myList.append(i)
-        print(i)
-
-    return render_template("index.html", list=myList)
-
-
-@app.route('/about')
-def about():
-    return "about World!"
-
-
-if __name__ == '__main__':
-    app.run()
+board = mongo.db.board #4
+test = {
+  "name": "test",
+}
+board.insert_one(test)
