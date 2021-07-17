@@ -29,6 +29,17 @@
     - robomongo로 관리
     - Dbeaver NoSQL은 EE버전을 설치해야 하는데, 유료 버전임 => [링크 확인](https://dbeaver.com/buy/lite/)
 
+  
+- Mac 버전(터미널 열고 명령어 입력)
+  
+  - MongoDB 실행하기
+    - brew tap mongodb/brew
+    - brew install mongodb-community
+    - brew link mongodb-community
+    
+  - MongoDB 실행하기
+    - brew services start mongodb-community
+
 
 # Python -> MongoDB 연동
 ```shell
